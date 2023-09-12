@@ -19,6 +19,7 @@ export async function getEquivalenciaPorDirectivo() {
     const apiResponse = await axios.get(
         `${config.apiUrl}/equivalencias/general/`
     );
+    console.log('apiResponse', apiResponse);
     return apiResponse.data;
 }
 

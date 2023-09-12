@@ -11,17 +11,18 @@ import { Link } from 'react-router-dom';
 import { HeaderDirectivo } from '../../molecules/HeaderDirectivo';
 import { HeaderSuperUsuario } from '../../molecules/HeaderSuperUsuario';
 import IconButton from '@mui/material/IconButton';
+import { Header } from '../../molecules/Header';
 
 const PageDireccion = () => {
     const [searchQuery, setSearchQuery] = useState('');
-    const rol = JSON.parse(localStorage.getItem('rol'));
-    const rolUsuario = () => {
-        if (rol === 'directivo') {
-            return <HeaderDirectivo />;
-        } else {
-            return <HeaderSuperUsuario />;
-        }
-    };
+    //const rol = JSON.parse(localStorage.getItem('rol'));
+    //const rolUsuario = () => {
+    //    if (rol === 'directivo') {
+    //        return <HeaderDirectivo />;
+    //    } else {
+    //        return <HeaderSuperUsuario />;
+    //    }
+    //};
 
     const iconSearch = React.createRef();
     const inputSearch = React.createRef();
@@ -29,7 +30,7 @@ const PageDireccion = () => {
     return (
         <Grid container direction="column">
             <Grid item container xs={12}>
-                {rolUsuario()}
+                <Header name="Instituciones" paginaPrincipal="/" />
             </Grid>
 
             <Grid
