@@ -18,14 +18,16 @@ import { OuterFormButtons } from '../../molecules/OuterFormButtons';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl, { useFormControl } from '@mui/material/FormControl';
 import { getEquivalencia } from '../../../services/revision';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { config } from '../../../config/config';
 import { ArchivoEquivalencia } from '../../molecules/ArchivoEquivalencia';
 import { HeaderDirectivo } from '../../molecules/HeaderDirectivo';
 import { HeaderSuperUsuario } from '../../molecules/HeaderSuperUsuario';
 import Chat from '../../chat/Chat';
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
+import { Header } from '../../molecules/Header';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const columns = [
     { id: 'desc', label: 'Solicitante', minWidth: 170 },
@@ -182,13 +184,13 @@ const PageRevision = ({ socket }) => {
             .catch(() => {});
     };
     const rol = JSON.parse(localStorage.getItem('rol'));
-    const rolUsuario = () => {
-        if (rol === 'directivo') {
-            return <HeaderDirectivo />;
-        } else {
-            return <HeaderSuperUsuario />;
-        }
-    };
+    //const rolUsuario = () => {
+    //    if (rol === 'directivo') {
+    //        return <HeaderDirectivo />;
+    //    } else {
+    //        return <HeaderSuperUsuario />;
+    //    }
+    //};
     const urlUsuario = () => {
         if (rol === 'directivo') {
             return '/direccion/solicitudes';
@@ -200,8 +202,12 @@ const PageRevision = ({ socket }) => {
     return (
         <>
             <Grid container direction="column">
-                <Grid item container xs={12}>
+                {/*<Grid item container xs={12}>
                     {rolUsuario()}
+                </Grid>*/}
+
+                <Grid item container xs={12}>
+                    <Header name="Instituciones" paginaPrincipal="/" />
                 </Grid>
 
                 <Grid
@@ -225,6 +231,11 @@ const PageRevision = ({ socket }) => {
                         alignItems="center"
                     >
                         <Grid item>
+                            <Link to="/direccion/solicitudes">
+                                <IconButton sx={{ padding: 0 }}>
+                                    <ArrowBackIcon />
+                                </IconButton>
+                            </Link>
                             <Titulos component="h2" titulogrande>
                                 Revisión
                             </Titulos>
