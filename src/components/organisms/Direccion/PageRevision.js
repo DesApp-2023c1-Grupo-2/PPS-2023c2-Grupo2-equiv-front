@@ -198,6 +198,10 @@ const PageRevision = ({ socket }) => {
             return '/superusuario/solicitudes';
         }
     };
+    const rolDireccion =
+        rol === 'directivo'
+            ? '/direccion/solicitudes'
+            : '/superusuario/solicitudes';
 
     return (
         <>
@@ -231,7 +235,7 @@ const PageRevision = ({ socket }) => {
                         alignItems="center"
                     >
                         <Grid item>
-                            <Link to="/direccion/solicitudes">
+                            <Link to={rolDireccion}>
                                 <IconButton sx={{ padding: 0 }}>
                                     <ArrowBackIcon />
                                 </IconButton>
