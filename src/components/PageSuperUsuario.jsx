@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
     Box,
     FormControl,
@@ -7,13 +8,16 @@ import {
     InputLabel,
     MenuItem,
     Select,
-    TextField
+    TextField,
+    IconButton
 } from '@mui/material';
 import { GridTop } from './atoms/GridTop';
 import { Titulos } from './atoms/Title/Titulos';
 import SearchIcon from '@mui/icons-material/Search';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TablaUsuarios from './organisms/TablaUsuarios';
 import { HeaderSuperUsuario } from './molecules/HeaderSuperUsuario';
+import { Header } from './molecules/Header';
 import { getUsuarios } from '../services/usuario_service';
 
 const PageSuperUsuario = () => {
@@ -42,8 +46,11 @@ const PageSuperUsuario = () => {
     return (
         <Grid container>
             <Grid item container xs={12}>
-                <HeaderSuperUsuario />
-            </Grid>
+                    <Header
+                        name="Mis equivalencias"
+                        paginaPrincipal="/usuario/equivalencias/"
+                    />
+                </Grid>
 
             <Grid
                 item
@@ -64,6 +71,11 @@ const PageSuperUsuario = () => {
                     alignItems="center"
                 >
                     <Grid item>
+                        <Link to="/direccionDashboard">
+                            <IconButton sx={{ padding: 0 }}>
+                                <ArrowBackIcon />
+                            </IconButton>
+                        </Link>
                         <Titulos component="h2" titulogrande>
                             Usuarios
                         </Titulos>

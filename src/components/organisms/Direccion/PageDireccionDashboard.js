@@ -40,6 +40,36 @@ const DireccionDashboard = () => {
                             </Grid>
 
                             <Grid sx={{ padding: '0.5rem' }}>
+                                <div
+                                    style={{
+                                        display:
+                                            rol == 'directivo' ? 'none' : 'true'
+                                    }}
+                                >
+                                    <DashboardCard
+                                        tituloCard="Usuarios"
+                                        cuerpoCard="Ir a control de instituciones en el sistema."
+                                        imgSrc="https://res.cloudinary.com/dfwvsjwjr/image/upload/c_scale,w_68/v1684362643/institucion_1_plx7hx.png"
+                                        link={'/superusuario/usuarios'}
+                                    />
+                                </div>
+                            </Grid>
+                            <Grid sx={{ padding: '0.5rem' }}>
+                                <div
+                                    style={{
+                                        display:
+                                            rol == 'directivo' ? 'none' : 'true'
+                                    }}
+                                >
+                                    <DashboardCard
+                                        tituloCard="Carreras"
+                                        cuerpoCard="Ir a control de instituciones en el sistema."
+                                        imgSrc="https://res.cloudinary.com/dfwvsjwjr/image/upload/c_scale,w_68/v1684362643/institucion_1_plx7hx.png"
+                                        link={'/superusuario/carreras'}
+                                    />
+                                </div>
+                            </Grid>
+                            <Grid sx={{ padding: '0.5rem' }}>
                                 <DashboardCard
                                     tituloCard="Instituciones"
                                     cuerpoCard="Ir a control de instituciones en el sistema."
