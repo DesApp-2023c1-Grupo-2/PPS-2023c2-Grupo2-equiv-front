@@ -22,6 +22,7 @@
     "@types/react-router": "^5.1.20",
     "axios": "^0.21.4",
     "bcryptjs": "^2.4.3",
+    "crypto-browserify": "^3.12.0",
     "date-fns": "^2.30.0",
     "dropzone": "^6.0.0-beta.1",
     "luxon": "^1.28.1",
