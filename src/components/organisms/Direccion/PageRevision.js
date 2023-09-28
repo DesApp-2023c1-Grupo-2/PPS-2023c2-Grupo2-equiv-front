@@ -472,102 +472,6 @@ const PageRevision = ({ socket }) => {
                             </TableContainer>
                         </Paper>
 
-                        <Grid container>
-                            <Grid
-                                item
-                                xs={12}
-                                lg={10}
-                                sx={{
-                                    padding: {
-                                        xs: '0px 30px',
-                                        lg: '0px 60px'
-                                    }
-                                }}
-                            >
-                                <Titulos
-                                    titulolabel="true"
-                                    sx={{
-                                        textAlign: {
-                                            lg: 'left'
-                                        }
-                                    }}
-                                >
-                                    Materias solicitadas de la UNAHUR
-                                </Titulos>
-                            </Grid>
-                            <Grid
-                                item
-                                xs={12}
-                                lg={2}
-                                sx={{
-                                    display: {
-                                        xs: 'none',
-                                        lg: 'inline'
-                                    },
-                                    padding: {
-                                        xs: '0rem 2rem',
-                                        lg: '0rem 1rem 0rem 1rem'
-                                    }
-                                }}
-                            >
-                                <Titulos titulolabel="true" textAlign="left">
-                                    Estado
-                                </Titulos>
-                            </Grid>
-                        </Grid>
-                        <Grid container overflow="auto" maxHeight={200}>
-                            {equiv.materiasSolicitadas !== undefined ? (
-                                equiv.materiasSolicitadas.map((materia) => {
-                                    return (
-                                        <>
-                                            {/*Equivalencias solicitadas*/}
-                                            <Grid
-                                                item
-                                                lg={10}
-                                                xs={12}
-                                                sx={{
-                                                    padding: {
-                                                        xs: '0px 30px',
-                                                        lg: '0px 60px'
-                                                    }
-                                                }}
-                                            >
-                                                <StandardInput
-                                                    inputFocused
-                                                    name="materiaSolicitada"
-                                                    value={materia.nombre}
-                                                    variant="outlined"
-                                                    focused={true}
-                                                    size="small"
-                                                    InputProps={{
-                                                        readOnly: true
-                                                    }}
-                                                />
-                                            </Grid>
-                                            {/*Estados*/}
-                                            <Grid
-                                                container
-                                                item
-                                                lg={2}
-                                                xs={12}
-                                                sx={{
-                                                    padding: {
-                                                        xs: '0rem 2rem',
-                                                        lg: '0rem 1rem 0rem 1rem'
-                                                    }
-                                                }}
-                                                marginTop="1rem"
-                                                alignItems="flex-start"
-                                            >
-                                                {renderStatus(materia)}
-                                            </Grid>
-                                        </>
-                                    );
-                                })
-                            ) : (
-                                <></>
-                            )}
-                        </Grid>
                         {/* Universidad Origen */}
 
                         {equiv.materiasAprobadas !== undefined ? (
@@ -828,6 +732,104 @@ const PageRevision = ({ socket }) => {
                         ) : (
                             <></>
                         )}
+
+                        <Grid container>
+                            <Grid
+                                item
+                                xs={12}
+                                lg={10}
+                                sx={{
+                                    padding: {
+                                        xs: '0px 30px',
+                                        lg: '0px 60px'
+                                    },
+                                    marginTop: '20px'
+                                }}
+                            >
+                                <Titulos
+                                    titulolabel="true"
+                                    sx={{
+                                        textAlign: {
+                                            lg: 'left'
+                                        }
+                                    }}
+                                >
+                                    Materias solicitadas de la UNAHUR
+                                </Titulos>
+                            </Grid>
+                            <Grid
+                                item
+                                xs={12}
+                                lg={2}
+                                sx={{
+                                    display: {
+                                        xs: 'none',
+                                        lg: 'inline'
+                                    },
+                                    padding: {
+                                        xs: '0rem 2rem',
+                                        lg: '0rem 1rem 0rem 1rem'
+                                    },
+                                    marginTop: '20px'
+                                }}
+                            >
+                                <Titulos titulolabel="true" textAlign="left">
+                                    Estado
+                                </Titulos>
+                            </Grid>
+                        </Grid>
+                        <Grid container overflow="auto" maxHeight={200}>
+                            {equiv.materiasSolicitadas !== undefined ? (
+                                equiv.materiasSolicitadas.map((materia) => {
+                                    return (
+                                        <>
+                                            {/*Equivalencias solicitadas*/}
+                                            <Grid
+                                                item
+                                                lg={10}
+                                                xs={12}
+                                                sx={{
+                                                    padding: {
+                                                        xs: '0px 30px',
+                                                        lg: '0px 60px'
+                                                    }
+                                                }}
+                                            >
+                                                <StandardInput
+                                                    inputFocused
+                                                    name="materiaSolicitada"
+                                                    value={materia.nombre}
+                                                    variant="outlined"
+                                                    focused={true}
+                                                    size="small"
+                                                    InputProps={{
+                                                        readOnly: true
+                                                    }}
+                                                />
+                                            </Grid>
+                                            {/*Estados*/}
+                                            <Grid
+                                                container
+                                                item
+                                                lg={2}
+                                                xs={12}
+                                                sx={{
+                                                    padding: {
+                                                        xs: '0rem 2rem',
+                                                        lg: '0rem 1rem 0rem 1rem'
+                                                    }
+                                                }}
+                                                alignItems="flex-start"
+                                            >
+                                                {renderStatus(materia)}
+                                            </Grid>
+                                        </>
+                                    );
+                                })
+                            ) : (
+                                <></>
+                            )}
+                        </Grid>
 
                         {/* Textarea */}
 
