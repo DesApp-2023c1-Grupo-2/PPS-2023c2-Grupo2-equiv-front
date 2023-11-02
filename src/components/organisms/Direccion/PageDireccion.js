@@ -52,11 +52,34 @@ const PageDireccion = () => {
 
     const [universidades, setUniversidades] = useState([]);
     const [universidad, setUniversidad] = useState({});
+    const [
+        materiasAprobadasPorUniversidad,
+        setMateriasAprobadasPorUniversidad
+    ] = useState([]);
+    const [materia, setMateria] = useState({});
     const [materiasAprobadas, setmateriasAprobadas] = useState([]);
+
     const defaultProps = {
         options: universidades,
         getOptionLabel: (option) => option.nombre_universidad
     };
+
+    const defaultPropsMaterias = {
+        options: materiasAprobadasPorUniversidad,
+        getOptionLabel: (option) => option.nombre_materia
+    };
+
+    useEffect(() => {
+        const traerMateriasAprobadas = async () => {
+            const listaMateriasAprobadas =
+                await getMateriaAprobadasPorUniversidad(universidad.id);
+            setMateriasAprobadasPorUniversidad(listaMateriasAprobadas);
+        };
+        if (universidad !== '') {
+            traerMateriasAprobadas();
+        }
+    }, [universidad]);
+
     const [openModalMateria, setOpenModalMateria] = useState(false);
     const handleOpenModalMateria = () => {
         setOpenModalMateria(true);
@@ -70,7 +93,6 @@ const PageDireccion = () => {
             const getUniversidades = await getInstitucionesHabilitadas();
             setUniversidades(getUniversidades);
         };
-
         traerUniversidades();
     }, []);
 
@@ -172,6 +194,22 @@ const PageDireccion = () => {
                             sx={{ width: 300, marginLeft: '2%' }}
                             renderInput={(params) => (
                                 <TextField {...params} label="Universidades" />
+                            )}
+                        />
+
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-materias"
+                            onChange={(event, newValue) => {
+                                setMateria(newValue);
+                            }}
+                            {...defaultPropsMaterias}
+                            sx={{ width: 200, marginLeft: '2%' }}
+                            renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label="Materias ya aprobadas"
+                                />
                             )}
                         />
 
