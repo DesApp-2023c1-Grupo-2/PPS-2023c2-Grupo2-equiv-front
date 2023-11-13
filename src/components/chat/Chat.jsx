@@ -29,43 +29,39 @@ const Chat = (props) => {
     useEffect(() => {
         const readMensajes = () => {
             getMensajes(id)
-               .then((rpta) => {
-                   if (Array.isArray(rpta.data) && rpta.data.length > 0) {
-                       setMensajes(rpta.data);
-                   }
-               })
-               .catch((error) => {
-                   console.log('Error al obtener los mensajes:', error);
-               });
-           }
-    
-       // Set up event listener on mount
-    socket.on('message', readMensajes);
+                .then((rpta) => {
+                    if (Array.isArray(rpta.data) && rpta.data.length > 0) {
+                        setMensajes(rpta.data);
+                    }
+                })
+                .catch((error) => {
+                    console.log('Error al obtener los mensajes:', error);
+                });
+        };
 
-    // Clean up the event listener on unmount
-    return () => {
-        socket.off('message', readMensajes);
-    };
+        // Set up event listener on mount
+        socket.on('message', readMensajes);
+
+        // Clean up the event listener on unmount
+        return () => {
+            socket.off('message', readMensajes);
+        };
     }, [id, socket]);
-
 
     useEffect(() => {
         const readMensajes = () => {
             getMensajes(id)
-               .then((rpta) => {
-                   if (Array.isArray(rpta.data) && rpta.data.length > 0) {
-                       setMensajes(rpta.data);
-                   }
-               })
-               .catch((error) => {
-                   console.log('Error al obtener los mensajes:', error);
-               });
-           }
+                .then((rpta) => {
+                    if (Array.isArray(rpta.data) && rpta.data.length > 0) {
+                        setMensajes(rpta.data);
+                    }
+                })
+                .catch((error) => {
+                    console.log('Error al obtener los mensajes:', error);
+                });
+        };
         readMensajes();
     }, [id]);
-
-
-
 
     const handleChange = (e) => {
         setMensaje(e.target.value);
@@ -76,7 +72,7 @@ const Chat = (props) => {
             id_equivalencia: id,
             texto: mensaje_input,
             id_remitente: usuario_id,
-            id: `${socket-id}${Math.random()}`,
+            id: `${socket - id}${Math.random()}`,
             socketID: socket.id
         };
         enviarMensaje(objMensaje).then((rpta) => {
@@ -103,7 +99,11 @@ const Chat = (props) => {
                 }}
             >
                 <div style={{ flex: 1, overflow: 'auto' }} ref={paperRef}>
-                    <Mensajes mensajes={mensajes} usuario_id={usuario_id} socket={socket}/>
+                    <Mensajes
+                        mensajes={mensajes}
+                        usuario_id={usuario_id}
+                        socket={socket}
+                    />
                 </div>
 
                 <Grid

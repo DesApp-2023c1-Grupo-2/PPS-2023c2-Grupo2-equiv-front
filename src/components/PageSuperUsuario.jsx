@@ -20,7 +20,6 @@ import { Link } from 'react-router-dom';
 import { Header } from './molecules/Header';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-
 const PageSuperUsuario = () => {
     const [rol, setRol] = useState('');
     const [usuarios, setUsuarios] = useState([]);
@@ -52,7 +51,6 @@ const PageSuperUsuario = () => {
                     paginaPrincipal="/usuario/equivalencias/"
                 />
             </Grid>
-            
 
             <Grid
                 item

@@ -130,7 +130,7 @@ const TablaUsuarios = (props) => {
                                     >
                                         {columns.map((column) => {
                                             let value = row[column.id];
-                                            if (column.id === "estado"){
+                                            if (column.id === 'estado') {
                                                 return (
                                                     <TableCell
                                                         key={column.id}
@@ -143,21 +143,23 @@ const TablaUsuarios = (props) => {
                                                             rol={rol}
                                                         />
                                                     </TableCell>
-                                                )
+                                                );
                                             } else {
                                                 return (
-                                                <TableCell
-                                                    key={column.id}
-                                                    align={column.align}
-                                                >
-                                                    {column.format &&
-                                                    typeof value === 'number'
-                                                        ? column.format(value)
-                                                        : value}
-                                                </TableCell>
-                                            );
+                                                    <TableCell
+                                                        key={column.id}
+                                                        align={column.align}
+                                                    >
+                                                        {column.format &&
+                                                        typeof value ===
+                                                            'number'
+                                                            ? column.format(
+                                                                  value
+                                                              )
+                                                            : value}
+                                                    </TableCell>
+                                                );
                                             }
-                                            
                                         })}
                                     </TableRow>
                                 );
