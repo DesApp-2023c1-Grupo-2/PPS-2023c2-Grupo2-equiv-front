@@ -17,7 +17,7 @@ import PageSuperUsuario from './components/PageSuperUsuario';
 import PageResetPassword from './components/organisms/PageResetPassword';
 import socketIO from 'socket.io-client';
 
-const socket = socketIO.connect('http://localhost:3001');
+const socket = socketIO.connect(process.env.REACT_APP__URL);
 
 function App() {
     const rol = JSON.parse(localStorage.getItem('rol'));
