@@ -30,3 +30,4 @@ yarn-error.log*
 
 # package files
 package-lock.json
+.env.example
