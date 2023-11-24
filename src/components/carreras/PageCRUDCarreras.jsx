@@ -122,12 +122,19 @@ const PageCRUDCarreras = () => {
             (dir) => dir.nombre + ' ' + dir.apellido
         );
         const directivosParaTabla = directivosString.join(', ');
+        const directivosID = directivos.map((dir) => {
+            return {
+                id: dir.id,
+                nombre: dir.nombre + ' ' + dir.apellido
+            };
+        });
         return {
             id,
             nombre_carrera,
             nombre_instituto,
             updatedAt,
-            directivosParaTabla
+            directivosParaTabla,
+            directivosID
         };
     }
 
@@ -160,14 +167,27 @@ const PageCRUDCarreras = () => {
         setOpenEliminar(false);
     };
 
+    const [personName, setPersonName] = React.useState([]);
+    const [dirId, setDirId] = React.useState([]);
+
     const handleUpdate = (e) => {
+        const directivosActuales = carreraSeleccionada.directivosID.map(
+            (dir) => dir.id
+        );
+        const directivosABorrar = directivosActuales.filter(
+            (dir) => !dirId.includes(dir)
+        );
+        const directivosAdd = dirId.filter(
+            (dir) => !directivosActuales.includes(dir)
+        );
         e.preventDefault();
         let objCarrera = {
             id: carreraSeleccionada.id,
             nombre_carrera: carreraSeleccionada.nombre_carrera,
-            nombre_instituto: carreraSeleccionada.nombre_instituto
+            nombre_instituto: carreraSeleccionada.nombre_instituto,
+            directivoDelete: directivosABorrar,
+            directivoAdd: directivosAdd
         };
-        console.log(objCarrera);
         setOpenEditar(false);
 
         updateCarrera(objCarrera).then((rpta) => {
@@ -396,6 +416,15 @@ const PageCRUDCarreras = () => {
                                                         carreraSeleccionada={
                                                             carreraSeleccionada
                                                         }
+                                                        listaDirectivos={
+                                                            directivos
+                                                        }
+                                                        personName={personName}
+                                                        setPersonName={
+                                                            setPersonName
+                                                        }
+                                                        dirId={dirId}
+                                                        setDirId={setDirId}
                                                     ></ModalEditarCarrera>
 
                                                     <IconButton
